@@ -9,7 +9,8 @@ type HTML struct {
 }
 
 func (h HTML) String() string {
-	htmlString := `<html>
+	htmlString := `<!DOCTYPE html>
+<html language="en">
 %v
 %v
 </html>

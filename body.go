@@ -5,8 +5,8 @@ type Body struct {
 }
 
 func (b Body) String() string {
-	bodyString := `  <body>
-  </body>`
+	bodyString := `	<body>
+	</body>`
 
 	return bodyString
 }

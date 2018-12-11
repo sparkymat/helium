@@ -5,8 +5,10 @@ type Head struct {
 }
 
 func (h Head) String() string {
-	headString := `  <head>
-  </head>`
+
+	headString := `	<head>
+		<meta charset="utf-8">
+	</head>`
 
 	return headString
 }
