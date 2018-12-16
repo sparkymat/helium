@@ -13,11 +13,11 @@ var _ = Describe("Html", func() {
 
 		expectedString := `<!DOCTYPE html>
 <html language="en">
-	<head>
-		<meta charset="utf-8">
-	</head>
-	<body>
-	</body>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+</body>
 </html>
 `
 
