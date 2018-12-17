@@ -1,15 +1,26 @@
 package helium
 
+import (
+	"fmt"
+	"strings"
+)
+
 // Head represents the <head> section of an HTML document
 type Head struct {
 	Nodes []Node
 }
 
 func (h Head) String() string {
+	var nodesStringBuilder strings.Builder
 
-	headString := `<head>
-<meta charset="utf-8">
-</head>`
+	for _, n := range h.Nodes {
+		nodesStringBuilder.WriteString("\n")
+		nodesStringBuilder.WriteString(n.String())
+	}
+
+	headString := fmt.Sprintf(`<head>
+<meta charset="utf-8">%v
+</head>`, nodesStringBuilder.String())
 
 	return headString
 }
@@ -18,5 +29,5 @@ func (h Head) String() string {
 type Title string
 
 func (t Title) String() string {
-	return string(t)
+	return fmt.Sprintf("<title>%v</title>", string(t))
 }
