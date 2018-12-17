@@ -10,6 +10,7 @@ type Head struct {
 	Nodes []Node
 }
 
+// Render returns the HTML of the <head> node
 func (h Head) Render() string {
 	var nodesStringBuilder strings.Builder
 
@@ -28,6 +29,7 @@ func (h Head) Render() string {
 // Title represnts the title for an HTML document
 type Title string
 
+// Render returns the HTML of the <title> node
 func (t Title) Render() string {
 	return fmt.Sprintf("<title>%v</title>", string(t))
 }
