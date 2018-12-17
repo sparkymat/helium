@@ -3,6 +3,8 @@ package helium
 import (
 	"fmt"
 	"strings"
+
+	"github.com/sparkymat/helium/charset"
 )
 
 // Head represents the <head> section of an HTML document
@@ -19,14 +21,20 @@ func (h Head) Render() string {
 		nodesStringBuilder.WriteString(n.Render())
 	}
 
-	headString := fmt.Sprintf(`<head>
-<meta charset="utf-8">%v
+	headString := fmt.Sprintf(`<head>%v
 </head>`, nodesStringBuilder.String())
 
 	return headString
 }
 
-// Title represnts the title for an HTML document
+// Title represents the title for an HTML document
 func Title(value string) HeadNode {
 	return HeadNode{name: "title", text: value}
+}
+
+// MetaCharset represents a <meta> tag for setting the charset
+func MetaCharset(value charset.Type) HeadNode {
+	node := HeadNode{name: "meta", hideClosingTag: true}
+	node.Attr("charset", value.String())
+	return node
 }

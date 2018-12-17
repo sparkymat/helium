@@ -5,6 +5,7 @@ import (
 	. "github.com/onsi/gomega"
 
 	. "github.com/sparkymat/helium"
+	"github.com/sparkymat/helium/charset"
 )
 
 var _ = Describe("Html", func() {
@@ -12,6 +13,7 @@ var _ = Describe("Html", func() {
 		doc := HTML{
 			Head{
 				[]HeadNode{
+					MetaCharset(charset.UTF_8),
 					Title("Hello World"),
 				},
 			},
@@ -21,7 +23,7 @@ var _ = Describe("Html", func() {
 		expectedString := `<!DOCTYPE html>
 <html language="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Hello World</title>
 </head>
 <body>
