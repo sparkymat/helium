@@ -8,7 +8,7 @@ type HTML struct {
 	Body Body
 }
 
-func (h HTML) String() string {
+func (h HTML) Render() string {
 	htmlString := `<!DOCTYPE html>
 <html language="en">
 %v
@@ -16,5 +16,5 @@ func (h HTML) String() string {
 </html>
 `
 
-	return fmt.Sprintf(htmlString, h.Head.String(), h.Body.String())
+	return fmt.Sprintf(htmlString, h.Head.Render(), h.Body.Render())
 }

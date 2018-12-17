@@ -29,6 +29,6 @@ var _ = Describe("Html", func() {
 </html>
 `
 
-		Expect(doc.String()).To(Equal(expectedString))
+		Expect(doc.Render()).To(Equal(expectedString))
 	})
 })

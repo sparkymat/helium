@@ -4,7 +4,7 @@ package helium
 type Body struct {
 }
 
-func (b Body) String() string {
+func (b Body) Render() string {
 	bodyString := `<body>
 </body>`
 
