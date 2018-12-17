@@ -7,7 +7,7 @@ import (
 
 // Head represents the <head> section of an HTML document
 type Head struct {
-	Nodes []Node
+	Nodes []HeadNode
 }
 
 // Render returns the HTML of the <head> node
@@ -27,9 +27,6 @@ func (h Head) Render() string {
 }
 
 // Title represnts the title for an HTML document
-type Title string
-
-// Render returns the HTML of the <title> node
-func (t Title) Render() string {
-	return fmt.Sprintf("<title>%v</title>", string(t))
+func Title(value string) HeadNode {
+	return HeadNode{name: "title", text: value}
 }

@@ -1,6 +1,6 @@
 package helium
 
-// Node represents an HTML node
+// Node represents a child node of the <body> node
 type Node interface {
 	Render() string
 }

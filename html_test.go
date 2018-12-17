@@ -11,7 +11,7 @@ var _ = Describe("Html", func() {
 	It("returns a node representing the html document", func() {
 		doc := HTML{
 			Head{
-				[]Node{
+				[]HeadNode{
 					Title("Hello World"),
 				},
 			},
