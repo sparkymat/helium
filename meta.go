@@ -42,11 +42,25 @@ func MetaGenerator(name string) HeadNode {
 
 // MetaKeywords represents a <meta> tag for setting the keywords
 func MetaKeywords(keywords ...string) HeadNode {
-	return metaWithAttr("generator", strings.Join(keywords, " "))
+	return metaWithAttr("keywords", strings.Join(keywords, ","))
 }
 
-// MetaViewport represents a <meta> tag for setting the viewport configuration
-func MetaViewport(width string, initialScale float64, minimumScale *float64, maximumScale *float64, userScalable *bool) HeadNode {
+// MetaViewportDefault returns a <meta> tag for viewport with device_width and scale of 1.0
+func MetaViewportDefault() HeadNode {
+	return MetaViewportSimple(DeviceWidth, 1.0)
+}
+
+// MetaViewportSimple represents a <meta> tag for setting the viewport configuration with just the width and initial scale
+func MetaViewportSimple(width string, initialScale float64) HeadNode {
+	return metaViewport(width, initialScale, nil, nil, nil)
+}
+
+// MetaViewportExtended represents a <meta> tag for setting the viewport configuration with all options
+func MetaViewportExtended(width string, initialScale float64, minimumScale float64, maximumScale float64, userScalable bool) HeadNode {
+	return metaViewport(width, initialScale, &minimumScale, &maximumScale, &userScalable)
+}
+
+func metaViewport(width string, initialScale float64, minimumScale *float64, maximumScale *float64, userScalable *bool) HeadNode {
 	var values []string
 
 	values = append(values, fmt.Sprintf("width=%v", width))
@@ -73,9 +87,4 @@ func MetaViewport(width string, initialScale float64, minimumScale *float64, max
 
 func formatFloat(value float64) string {
 	return strconv.FormatFloat(value, 'f', -1, 64)
-}
-
-// MetaViewportDefault returns a <meta> tag for viewport with device_width and scale of 1.0
-func MetaViewportDefault() HeadNode {
-	return MetaViewport(DeviceWidth, 1.0, nil, nil, nil)
 }
