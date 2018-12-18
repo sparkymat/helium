@@ -5,7 +5,7 @@ import "fmt"
 // HTML represents a valid HTML document
 type HTML struct {
 	Head head
-	Body Body
+	Body body
 }
 
 func (h HTML) Render() string {

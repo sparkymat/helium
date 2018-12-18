@@ -6,15 +6,19 @@ import (
 )
 
 // Body represents the <body> section of an HTML document
-type Body struct {
-	Nodes []Node
+type body struct {
+	nodes []Node
+}
+
+func Body(children ...Node) body {
+	return body{children}
 }
 
 // Render returns the HTML of the <body> node
-func (b Body) Render() string {
+func (b body) Render() string {
 	var nodesStringBuilder strings.Builder
 
-	for _, n := range b.Nodes {
+	for _, n := range b.nodes {
 		nodesStringBuilder.WriteString("\n")
 		nodesStringBuilder.WriteString(n.Render())
 	}

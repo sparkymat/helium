@@ -16,7 +16,7 @@ var _ = Describe("Html", func() {
 				MetaViewportDefault(),
 				Title("Hello World"),
 			),
-			Body{},
+			Body(),
 		}
 
 		expectedString := `<!DOCTYPE html>
