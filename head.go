@@ -5,16 +5,21 @@ import (
 	"strings"
 )
 
+type head struct {
+	nodes []HeadNode
+}
+
 // Head represents the <head> section of an HTML document
-type Head struct {
-	Nodes []HeadNode
+func Head(children ...HeadNode) head {
+	h := head{children}
+	return h
 }
 
 // Render returns the HTML of the <head> node
-func (h Head) Render() string {
+func (h head) Render() string {
 	var nodesStringBuilder strings.Builder
 
-	for _, n := range h.Nodes {
+	for _, n := range h.nodes {
 		nodesStringBuilder.WriteString("\n")
 		nodesStringBuilder.WriteString(n.Render())
 	}

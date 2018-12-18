@@ -4,7 +4,7 @@ import "fmt"
 
 // HTML represents a valid HTML document
 type HTML struct {
-	Head Head
+	Head head
 	Body Body
 }
 
